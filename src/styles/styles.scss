@@ -1,7 +1,54 @@
 @use "tailwindcss";
 
+
 @plugin "daisyui" {
-    themes: light --default, dark --prefersdark;
+    themes: light --obra-abc, dark --prefersdark;
     root: ":root";
 }
 
+body {
+--background-color: hsl(211, 82%, 94%);
+}
+
+@plugin "daisyui/theme" {
+    name: "obra-abc";
+    default: true;
+    prefersdark: true;
+    color-scheme: light;
+    --color-base-100: #ffffff;
+    --color-base-200: #F8F9F9;
+    --color-base-300: #E0E0E0;
+    --color-base-content: hsl(208, 100%, 5%);
+    --color-primary: #0B3A6D;
+    --color-primary-content: hsl(211, 82%, 94%);
+    --color-secondary: oklch(70% 0.25 200);
+    --color-secondary-content: oklch(98% 0.01 200);
+    --color-accent: oklch(65% 0.25 160);
+    --color-accent-content: hsl(211, 82%, 94%);
+    --color-neutral: oklch(50% 0.05 240);
+    --color-neutral-content: oklch(98% 0.01 240);
+    --color-info: oklch(70% 0.2 220);
+    --color-info-content: oklch(98% 0.01 220);
+    --color-success: oklch(65% 0.25 140);
+    --color-success-content: oklch(98% 0.01 140);
+    --color-warning: oklch(80% 0.25 80);
+    --color-warning-content: oklch(20% 0.05 80);
+    --color-error: oklch(65% 0.3 30);
+    --color-error-content: oklch(98% 0.01 30);
+
+    /* border radius */
+    --radius-selector: 1rem;
+    --radius-field: 0.25rem;
+    --radius-box: 0.5rem;
+
+    /* base sizes */
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+
+    /* border size */
+    --border: 1px;
+
+    /* effects */
+    --depth: 1;
+    --noise: 0;
+}
