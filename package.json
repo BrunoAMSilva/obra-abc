@@ -4,15 +4,36 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run optimize:articles && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:setup": "node scripts/test-setup.js",
+    "crawl:site": "node scripts/crawl-site.js",
+    "process:content": "node scripts/process-content.js",
+    "optimize:images": "node scripts/optimize-images.js",
+    "optimize:articles": "node scripts/optimize-article-images.js",
+    "watch:images": "node scripts/watch-images.js",
+    "dev:full": "npm run watch:images & npm run dev",
+    "migrate:full": "node scripts/migrate.js full",
+    "migrate:crawl": "node scripts/migrate.js crawl",
+    "migrate:process": "node scripts/migrate.js process",
+    "migrate:images": "node scripts/migrate.js images",
+    "validate:content": "node scripts/validate-content.js",
+    "generate:redirects": "echo 'Redirects generated during content processing'",
+    "lighthouse": "lighthouse http://localhost:4321 --output json --output html --output-path ./lighthouse-report"
   },
   "dependencies": {
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.8",
     "daisyui": "^5.0.50",
     "sass": "^1.89.2",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "jsdom": "^25.0.0",
+    "lighthouse": "^12.2.0",
+    "playwright": "^1.49.0",
+    "sharp": "^0.34.3"
   }
 }

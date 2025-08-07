@@ -1,15 +1,58 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-        <style>
-            @import "../styles/styles.scss";
-        </style>
-	</head>
-	<body>
-		<slot />
-	</body>
+---
+import HeaderMenu from "../components/HeaderMenu.astro";
+import Footer from '../components/Footer.astro';
+import logoSrc from "../assets/icon/favicon-300x300.png";
+import '../styles/global.css';
+
+const {
+  title = "Obra ABC - Amici Boni Consilii",
+  description = "Obra ABC - Organização de apoio às famílias e comunidade",
+  canonical,
+  image,
+} = Astro.props;
+
+const fullTitle =
+  title === "Obra ABC - Amici Boni Consilii" ? title : `${title} | Obra ABC`;
+---
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
+    <meta name="description" content={description} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical || Astro.url} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    {image && <meta property="og:image" content={image} />}
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description} />
+    {image && <meta property="twitter:image" content={image} />}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="canonical" href="https://obraabc.org/" />
+    <link rel="shortlink" href="https://obraabc.org/" />
+
+  </head>
+  <body>
+	<HeaderMenu homeTextLabel="Obra ABC" showLabel={false} logoSrc={logoSrc.src} />
+    <slot />
+	<Footer />
+  </body>
 </html>

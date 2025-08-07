@@ -1,0 +1,35 @@
+{
+  "migrationDate": "2025-08-06T22:02:29.303Z",
+  "sourceUrl": "https://obraabc.org",
+  "summary": {
+    "totalPages": 38,
+    "totalImages": 170,
+    "contentTypes": {
+      "homepage": 9,
+      "about": 0,
+      "services": 0,
+      "contact": 0,
+      "blog": 0,
+      "resources": 0,
+      "other": 29
+    },
+    "crawlErrors": 11,
+    "imageErrors": 0
+  },
+  "nextSteps": [
+    "Review generated content in src/content/",
+    "Customize Astro layouts and components",
+    "Update SCSS styles to match original design",
+    "Test all internal links and redirects",
+    "Optimize SEO metadata",
+    "Set up deployment pipeline"
+  ],
+  "recommendations": [
+    "Use Astro Image component for optimized images",
+    "Implement proper error pages (404, 500)",
+    "Add search functionality if needed",
+    "Consider adding a sitemap.xml generator",
+    "Set up analytics and monitoring",
+    "Implement form handling for contact forms"
+  ]
+}

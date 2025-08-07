@@ -1,0 +1,359 @@
+---
+import { getCollection } from "astro:content";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+}
+
+// Only fetch collections if they exist and are needed
+let pages: any[] = [];
+try {
+  // Assuming you have a 'pages' collection defined in src/content/config.ts
+  pages = await getCollection("pages");
+} catch (error) {
+  // Handle case where collection doesn't exist
+  console.warn("Pages collection not found");
+}
+
+const {
+  title = "Obra ABC",
+  description = "Obra ABC - Organização de apoio às famílias e comunidade",
+  canonical,
+  image,
+} = Astro.props;
+
+const fullTitle = title === "Obra ABC" ? title : `${title} | Obra ABC`;
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
+    <meta name="description" content={description} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical || Astro.url} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    {image && <meta property="og:image" content={image} />}
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description} />
+    {image && <meta property="twitter:image" content={image} />}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="site-nav">
+        <div class="nav-container">
+          <a href="/" class="nav-logo">
+            <span>Obra ABC</span>
+          </a>
+
+          <ul class="nav-menu">
+            <li><a href="/">Início</a></li>
+            <li><a href="/sobre">Sobre</a></li>
+            <li><a href="/servicos">Serviços</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+          </ul>
+
+          <button class="nav-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="site-main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Obra ABC</h3>
+            <p>Organização de apoio às famílias e comunidade</p>
+          </div>
+
+          <div class="footer-section">
+            <h4>Links Úteis</h4>
+            <ul>
+              <li><a href="/sobre">Sobre Nós</a></li>
+              <li><a href="/servicos">Serviços</a></li>
+              <li><a href="/contacto">Contacto</a></li>
+            </ul>
+
+            {
+              pages.length > 0 && (
+                <ul>
+                  {pages.map((page) => (
+                    <li>
+                      <a href={`/${page.slug}`}>{page.data.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              )
+            }
+          </div>
+
+          <div class="footer-section">
+            <h4>Contacto</h4>
+            <p>Email: info@obraabc.org</p>
+            <p>Telefone: +351 xxx xxx xxx</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; {new Date().getFullYear()} Obra ABC. Todos os direitos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile navigation toggle
+      const navToggle = document.querySelector(".nav-toggle");
+      const navMenu = document.querySelector(".nav-menu");
+
+      navToggle?.addEventListener("click", () => {
+        navMenu?.classList.toggle("nav-menu--open");
+        navToggle.classList.toggle("nav-toggle--open");
+      });
+    </script>
+  </body>
+</html>
+
+<style lang="css">
+  // Component-scoped styles for the layout
+  .site-header {
+    background: var(--color-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .site-nav {
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-primary-dark);
+      }
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+
+      @media (max-width: 768px) {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-white);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+        &.nav-menu--open {
+          display: flex;
+        }
+      }
+
+      a {
+        color: var(--color-text);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: var(--color-primary);
+        }
+      }
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px;
+
+      @media (max-width: 768px) {
+        display: flex;
+      }
+
+      span {
+        width: 25px;
+        height: 3px;
+        background: var(--color-text);
+        transition: all 0.3s ease;
+      }
+
+      &.nav-toggle--open {
+        span:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 6px);
+        }
+        span:nth-child(2) {
+          opacity: 0;
+        }
+        span:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+      }
+    }
+  }
+
+  .site-main {
+    min-height: calc(100vh - 70px - 200px); // Header height - footer height
+  }
+
+  .site-footer {
+    background: var(--color-gray-dark);
+    color: var(--color-white);
+    padding: 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 3rem 1rem 1rem;
+    padding: 0;
+  }
+
+  .footer-content {
+    li {
+      display: grid;
+      margin-bottom: 0.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-content {
+      li {
+        display: grid;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .footer-section {
+      h3,
+      h4,
+      p {
+        color: var(--color-gray-light);
+        margin-bottom: 1rem;
+        color: var(--color-primary-light);
+      }
+      gap: 2rem;
+      color: var(--color-white);
+      margin-bottom: 2rem;
+    }
+
+    .footer-section {
+      h3,
+      p {
+        h4 {
+          color: var(--color-gray-light);
+          margin-bottom: 1rem;
+          color: var(--color-primary-light);
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          color: var(--color-gray-light);
+          li {
+            margin-bottom: 0.5rem;
+          }
+          a {
+            color: var(--color-white);
+            text-decoration: none;
+            transition: color 0.2s ease;
+
+            &:hover {
+              color: var(--color-primary);
+            }
+          }
+
+          a {
+            color: var(--color-gray-light);
+            text-decoration: none;
+            transition: color 0.2s ease;
+
+            &:hover {
+              color: var(--color-white);
+            }
+          }
+        }
+
+        p {
+          color: var(--color-gray-light);
+          line-height: 1.6;
+        }
+      }
+
+      .footer-bottom {
+        border-top: 1px solid var(--color-gray);
+        padding-top: 1rem;
+        text-align: center;
+        color: var(--color-gray-light);
+      }
+    }
+  }
+</style>

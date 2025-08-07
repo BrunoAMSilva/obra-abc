@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+// Only fetch collections if they exist and are needed
+
+let pages: CollectionEntry<"articles">[] = [];
+try {
+  // Assuming you have a 'pages' collection defined in src/content/config.ts
+  const articles = await getCollection("articles");
+
+  pages = articles.slice(0, 5);
+} catch (error) {
+  // Handle case where collection doesn't exist
+  console.warn("Pages collection not found");
+}
+---
+
+<section class="page-section">
+  
+<h2 class="title-sm">Artigos</h2>
+
+{
+  pages.length > 0 && (
+    <nav class="grid auto-fill-250 gap-4">
+      {pages.map((page) => (
+        <a class="" href={`/${page.slug}`}>
+          <div class="card bg-base-200 w-full shadow-sm h-full">
+            <figure>
+              <Image
+                class="aspect-3/2 object-cover w-full"
+                src={page.data.image}
+                alt={page.data.imageDescription ?? ""}
+                width={400}
+                height={200}
+              />
+            </figure>
+            <div class="card-body">
+              <h3 class="card-title">{page.data.title}</h3>
+              <p>{page.data.description}</p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </nav>
+  )
+}
+</section>

@@ -1,0 +1,190 @@
+---
+// Dynamic page handler for migrated content
+// This will be activated after content migration
+import { getCollection } from "astro:content";
+import Page from "../layouts/Page.astro";
+
+// Uncomment after content migration:
+// import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection("articles");
+  return pages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { Content } = await page.render();
+
+// Placeholder content (this route won't render any pages until migration)
+page.data = page.data || {
+  title: "Página não encontrada",
+  description: "Esta página será gerada após a migração de conteúdo.",
+  seo: {
+    canonical: undefined as string | undefined,
+  },
+  category: "article",
+  originalUrl: "",
+  slug: "placeholder-page",
+  publishDate: new Date().toISOString(),
+};
+---
+
+<Page
+  title={page.data.title}
+  description={page.data.description}
+  canonical={page.data.seo?.canonical}
+>
+  <article class="prose prose-blue container section">
+    <header class="article-header">
+      <h1>{page.data.title}</h1>
+      <time datetime={page.data.publishDate}>
+        Publicado a {
+          new Date(page.data.publishDate).toLocaleDateString("pt-PT", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        }
+      </time>
+    </header>
+    <div class="article-content">
+      <Content />
+
+      <div class="actions">
+        <a href="/" class="btn btn--primary">Voltar ao Início</a>
+      </div>
+    </div>
+  </article>
+</Page>
+
+<style lang="css">
+  .content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content {
+    line-height: var(--line-height-relaxed);
+
+    h1 {
+      color: var(--color-primary);
+      margin-bottom: var(--space-xl);
+    }
+
+    h2 {
+      color: var(--color-text);
+      margin: var(--space-xl) 0 var(--space-lg);
+    }
+
+    h3 {
+      color: var(--color-text);
+      margin: var(--space-lg) 0 var(--space-md);
+    }
+
+    ol,
+    ul {
+      margin: var(--space-md) 0;
+      padding-left: var(--space-xl);
+
+      li {
+        margin-bottom: var(--space-sm);
+      }
+    }
+
+    code {
+      background: var(--color-bg-muted);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--radius-sm);
+      font-family: "Monaco", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+  }
+
+  .info-box {
+    background: var(--color-bg-muted);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    margin: var(--space-xl) 0;
+    border-left: 4px solid var(--color-primary);
+
+    h3 {
+      margin-top: 0;
+      color: var(--color-primary);
+    }
+  }
+
+  .actions {
+    margin-top: var(--space-2xl);
+    text-align: center;
+  }
+
+  /* Styles for migrated content (active after migration) */
+  .article-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--color-gray-light);
+
+    h1 {
+      color: var(--color-text);
+      margin-bottom: var(--space-md);
+    }
+  }
+
+  .article-description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  .article-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    :global(h2) {
+      margin-top: var(--space-2xl);
+      margin-bottom: var(--space-lg);
+      color: var(--color-text);
+    }
+
+    :global(h3) {
+      margin-top: var(--space-xl);
+      margin-bottom: var(--space-md);
+      color: var(--color-text);
+    }
+
+    :global(p) {
+      margin-bottom: var(--space-lg);
+      line-height: var(--line-height-relaxed);
+    }
+
+    :global(img) {
+      margin: var(--space-xl) 0;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+
+    :global(blockquote) {
+      border-left: 4px solid var(--color-primary);
+      padding: var(--space-md) var(--space-lg);
+      margin: var(--space-xl) 0;
+      background: var(--color-bg-muted);
+      border-radius: var(--radius-md);
+      font-style: italic;
+    }
+
+    :global(ul),
+    :global(ol) {
+      margin: var(--space-lg) 0;
+      padding-left: var(--space-xl);
+    }
+
+    :global(li) {
+      margin-bottom: var(--space-sm);
+      line-height: var(--line-height-relaxed);
+    }
+  }
+</style>

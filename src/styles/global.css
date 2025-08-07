@@ -1,13 +1,10 @@
-@use "tailwindcss";
+@import "tailwindcss";
 
+@plugin "@tailwindcss/typography";
 
 @plugin "daisyui" {
     themes: light --obra-abc, dark --prefersdark;
     root: ":root";
-}
-
-body {
---background-color: hsl(211, 82%, 94%);
 }
 
 @plugin "daisyui/theme" {
@@ -51,4 +48,41 @@ body {
     /* effects */
     --depth: 1;
     --noise: 0;
+}
+
+@utility auto-fill-* {
+    grid-template-columns: repeat(auto-fill, minmax(min(var(--spacing)* --value(integer), 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(calc(--value(integer) * 1px), 100%), 1fr));
+}
+
+@utility auto-fit-* {
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--spacing)* --value(integer), 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(calc(--value(integer) * 1px), 100%), 1fr));
+}
+
+.title-sm {
+    @apply text-2xl font-bold;
+    @apply mb-4;
+    @apply mt-8;
+}
+
+.title-md {
+    @apply text-3xl font-bold;
+    @apply mb-4;
+    @apply mt-8;
+}
+
+@utility content-wrapper {
+    @apply max-w-7xl mx-auto;
+    @apply px-4;
+    @apply max-w-7xl;
+    @apply mx-auto;
+    @apply px-4;
+    @apply sm:px-6;
+    @apply lg:px-8;
+}
+
+.page-section {
+    @apply content-wrapper;
+    @apply py-8;
 }

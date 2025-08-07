@@ -1,0 +1,30 @@
+---
+/**
+ * Image component with automatic optimization
+ * Uses the image manifest generated during migration
+ */
+import { getBestImageSrc, getImageInfo, generateSrcSet } from '../utils/images';
+
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+}
+
+const { src, alt, class: className, loading = 'lazy' } = Astro.props;
+
+const imageInfo = getImageInfo(src);
+const optimizedSrc = getBestImageSrc(src);
+const srcSet = generateSrcSet(src);
+---
+
+<img 
+  src={optimizedSrc}
+  alt={alt}
+  class={className}
+  loading={loading}
+  srcset={srcSet || undefined}
+  width={imageInfo?.width}
+  height={imageInfo?.height}
+/>

@@ -1,0 +1,74 @@
+---
+export interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  sizes?: string;
+}
+
+const { src, alt, class: className = '', loading = 'lazy', sizes = '(max-width: 400px) 400px, (max-width: 800px) 800px, (max-width: 1200px) 1200px, 100vw' } = Astro.props;
+
+// Extract filename and folder from src path
+// e.g., "/assets/articles/2021-06-25-arraial/image-001.jpg" -> "2021-06-25-arraial/image-001"
+const pathMatch = src.match(/\/assets\/articles\/(.+)\/([^/]+)\.(jpg|jpeg|png|webp)$/i);
+if (!pathMatch) {
+  throw new Error(`Invalid image path format: ${src}. Expected: /assets/articles/folder/filename.ext`);
+}
+
+const [, folder, filename] = pathMatch;
+const basePath = `/assets/articles/${folder}/${filename}`;
+---
+
+<picture class={className}>
+  <!-- Small screens (max 400px) -->
+  <source 
+    media="(max-width: 400px)" 
+    srcset={`${basePath}-sm.webp`} 
+    type="image/webp"
+  />
+  <source 
+    media="(max-width: 400px)" 
+    srcset={`${basePath}-sm.jpg`} 
+    type="image/jpeg"
+  />
+  
+  <!-- Medium screens (max 800px) -->
+  <source 
+    media="(max-width: 800px)" 
+    srcset={`${basePath}-md.webp`} 
+    type="image/webp"
+  />
+  <source 
+    media="(max-width: 800px)" 
+    srcset={`${basePath}-md.jpg`} 
+    type="image/jpeg"
+  />
+  
+  <!-- Large screens (max 1200px) -->
+  <source 
+    media="(max-width: 1200px)" 
+    srcset={`${basePath}-lg.webp`} 
+    type="image/webp"
+  />
+  <source 
+    media="(max-width: 1200px)" 
+    srcset={`${basePath}-lg.jpg`} 
+    type="image/jpeg"
+  />
+  
+  <!-- Default/largest size -->
+  <source 
+    srcset={`${basePath}.webp`} 
+    type="image/webp"
+  />
+  
+  <!-- Fallback -->
+  <img 
+    src={`${basePath}.jpg`} 
+    alt={alt} 
+    loading={loading}
+    sizes={sizes}
+    class={className}
+  />
+</picture>
