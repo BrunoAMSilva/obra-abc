@@ -1,10 +1,19 @@
 ---
-import Page from "../layouts/Page.astro";
-import Hero from "../components/Hero.astro";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
 import ArticlesSection from "../components/ArticlesSection.astro";
+import Hero from "../components/Hero.astro";
+import Projects from "../components/projects/Projects.astro";
+import Page from "../layouts/Page.astro";
+const homepage = (await getEntry(
+  "homepage",
+  "-index"
+)) as CollectionEntry<"homepage">;
+
 ---
 
 <Page>
 	<Hero />
+	<Projects features={homepage.data.key_features.feature_list} />
 	<ArticlesSection />
 </Page>

@@ -1,0 +1,43 @@
+{
+    "site": {
+        "title": "Obra ABC",
+        "subtitle": "Amici Boni Consilii",
+        "base_url": "https://pinwheel-astro.vercel.app",
+        "base_path": "/",
+        "trailing_slash": false,
+        "favicon": "/favicon/favicon-300.png",
+        "logo": "/favicon/favicon-300.png",
+        "logo_width": "64",
+        "logo_height": "64",
+        "logo_text": "Obra ABC"
+    },
+    "settings": {
+        "pagination": 6,
+        "summary_length": 100
+    },
+    "google_tag_manager": {
+        "enable": false,
+        "gtm_id": "GTM-XXXXXX"
+    },
+    "call_to_action": {
+        "title": "Juntos fazemos a diferença",
+        "description": "Um pequeno gesto pode mudar vidas. Junte-se a nós na missão de apoiar as famílias e a comunidade.",
+        "button": {
+            "label": "Doar agora",
+            "link": "https://obraabc.org/donativos/#donativo"
+        }
+    },
+    "params": {
+        "footer_description": "Amici Boni Consilii",
+        "email": "obraabc@obraabc.org",
+        "location": "R. Dr. Ernesto da Fonseca 232,\n4435-214 Rio Tinto",
+        "phone": "224 893 006",
+        "contact_form_action": "#",
+        "copyright": "Copyright © 2025 Obra ABC"
+    },
+    "metadata": {
+        "meta_author": "Obra ABC",
+        "meta_image": "/images/og-image.png",
+        "meta_description": "Organização de apoio às famílias e comunidade"
+    }
+}

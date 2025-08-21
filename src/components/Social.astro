@@ -1,0 +1,491 @@
+---
+import AddressLogoFill from 'phosphor-astro/AddressBookFill.astro';
+import BehanceLogoFill from 'phosphor-astro/BehanceLogoFill.astro';
+import CodepenLogoFill from 'phosphor-astro/CodepenLogoFill.astro';
+import DiscordLogoFill from 'phosphor-astro/DiscordLogoFill.astro';
+import DribbbleLogoFill from 'phosphor-astro/DribbbleLogoFill.astro';
+import EmailLogoFill from 'phosphor-astro/EnvelopeFill.astro';
+import FacebookLogoFill from 'phosphor-astro/FacebookLogoFill.astro';
+import GithubLogoFill from 'phosphor-astro/GithubLogoFill.astro';
+import GitlabLogoFill from 'phosphor-astro/GitlabLogoFill.astro';
+import InstagramLogoFill from 'phosphor-astro/InstagramLogoFill.astro';
+import LinkedinLogoFill from 'phosphor-astro/LinkedinLogoFill.astro';
+import MastodonLogoFill from 'phosphor-astro/MastodonLogoFill.astro';
+import MediumLogoFill from 'phosphor-astro/MediumLogoFill.astro';
+import PhoneLogoFill from 'phosphor-astro/PhoneFill.astro';
+import PinterestLogoFill from 'phosphor-astro/PinterestLogoFill.astro';
+import RedditLogoFill from 'phosphor-astro/RedditLogoFill.astro';
+import RssFill from 'phosphor-astro/RssFill.astro';
+import SkypeLogoFill from 'phosphor-astro/SkypeLogoFill.astro';
+import SlackLogoFill from 'phosphor-astro/SlackLogoFill.astro';
+import SnapchatLogoFill from 'phosphor-astro/SnapchatLogoFill.astro';
+import SoundcloudLogoFill from 'phosphor-astro/SoundcloudLogoFill.astro';
+import TiktokLogoFill from 'phosphor-astro/TiktokLogoFill.astro';
+import TumblrLogoFill from 'phosphor-astro/TumblrLogoFill.astro';
+import TwitterLogoFill from 'phosphor-astro/TwitterLogoFill.astro';
+import WhatsappLogoFill from 'phosphor-astro/WhatsappLogoFill.astro';
+import YoutubeLogoFill from 'phosphor-astro/YoutubeLogoFill.astro';
+
+const { source, className } = Astro.props;
+
+const {
+  facebook,
+  twitter,
+  mastodon,
+  instagram,
+  youtube,
+  linkedin,
+  github,
+  gitlab,
+  discord,
+  slack,
+  medium,
+  codepen,
+  bitbucket,
+  dribbble,
+  behance,
+  pinterest,
+  soundcloud,
+  tumblr,
+  reddit,
+  vk,
+  whatsapp,
+  snapchat,
+  vimeo,
+  tiktok,
+  foursquare,
+  rss,
+  email,
+  phone,
+  address,
+  skype,
+  website,
+} = source;
+---
+
+<ul class={className}>
+  {
+    facebook && (
+      <li class="inline-block">
+        <a
+          aria-label="facebook"
+          href={facebook}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <FacebookLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    twitter && (
+      <li class="inline-block">
+        <a
+          aria-label="twitter"
+          href={twitter}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <TwitterLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    mastodon && (
+      <li class="inline-block">
+        <a
+          aria-label="mastodon"
+          href={mastodon}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <MastodonLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    instagram && (
+      <li class="inline-block">
+        <a
+          aria-label="instagram"
+          href={instagram}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <InstagramLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    youtube && (
+      <li class="inline-block">
+        <a
+          aria-label="youtube"
+          href={youtube}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <YoutubeLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    linkedin && (
+      <li class="inline-block">
+        <a
+          aria-label="linkedin"
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <LinkedinLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    github && (
+      <li class="inline-block">
+        <a
+          aria-label="github"
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <GithubLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    gitlab && (
+      <li class="inline-block">
+        <a
+          aria-label="gitlab"
+          href={gitlab}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <GitlabLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    discord && (
+      <li class="inline-block">
+        <a
+          aria-label="discord"
+          href={discord}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <DiscordLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    slack && (
+      <li class="inline-block">
+        <a
+          aria-label="slack"
+          href={slack}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <SlackLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    medium && (
+      <li class="inline-block">
+        <a
+          aria-label="medium"
+          href={medium}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <MediumLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    codepen && (
+      <li class="inline-block">
+        <a
+          aria-label="codepen"
+          href={codepen}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <CodepenLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    bitbucket && (
+      <li class="inline-block">
+        <a
+          aria-label="bitbucket"
+          href={bitbucket}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+
+        </a>
+      </li>
+    )
+  }
+  {
+    dribbble && (
+      <li class="inline-block">
+        <a
+          aria-label="dribbble"
+          href={dribbble}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <DribbbleLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    behance && (
+      <li class="inline-block">
+        <a
+          aria-label="behance"
+          href={behance}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <BehanceLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    pinterest && (
+      <li class="inline-block">
+        <a
+          aria-label="pinterest"
+          href={pinterest}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <PinterestLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    soundcloud && (
+      <li class="inline-block">
+        <a
+          aria-label="soundcloud"
+          href={soundcloud}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <SoundcloudLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    tumblr && (
+      <li class="inline-block">
+        <a
+          aria-label="tumblr"
+          href={tumblr}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <TumblrLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    reddit && (
+      <li class="inline-block">
+        <a
+          aria-label="reddit"
+          href={reddit}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <RedditLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    vk && (
+      <li class="inline-block">
+        <a
+          aria-label="vk"
+          href={vk}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+
+        </a>
+      </li>
+    )
+  }
+  {
+    whatsapp && (
+      <li class="inline-block">
+        <a
+          aria-label="whatsapp"
+          href={whatsapp}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <WhatsappLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    snapchat && (
+      <li class="inline-block">
+        <a
+          aria-label="snapchat"
+          href={snapchat}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <SnapchatLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    vimeo && (
+      <li class="inline-block">
+        <a
+          aria-label="vimeo"
+          href={vimeo}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+
+        </a>
+      </li>
+    )
+  }
+  {
+    tiktok && (
+      <li class="inline-block">
+        <a
+          aria-label="tiktok"
+          href={tiktok}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <TiktokLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    foursquare && (
+      <li class="inline-block">
+        <a
+          aria-label="foursquare"
+          href={foursquare}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+
+        </a>
+      </li>
+    )
+  }
+  {
+    skype && (
+      <li class="inline-block">
+        <a
+          aria-label="skype"
+          href={skype}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <SkypeLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    website && (
+      <li class="inline-block">
+        <a
+          aria-label="website"
+          href={website}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+      class="w-7 primary text-primary"   
+        </a>
+      </li>
+    )
+  }
+  {
+    rss && (
+      <li class="inline-block">
+        <a
+          aria-label="rss feed"
+          href={rss}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <RssFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    email && (
+      <li class="inline-block">
+        <a aria-label="email" href={`mailto:${email}`}>
+          <EmailLogoFill />
+        </a>
+      </li>
+    )
+  }
+  {
+    phone && (
+      <li class="inline-block">
+        <a aria-label="telephone" href={`tel:${phone}`}>
+          <PhoneLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+  {
+    address && (
+      <li class="inline-block">
+        <a
+          aria-label="location"
+          href={address}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <AddressLogoFill class="w-7 primary text-primary" />
+        </a>
+      </li>
+    )
+  }
+</ul>

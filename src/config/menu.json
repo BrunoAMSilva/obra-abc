@@ -1,0 +1,50 @@
+{
+    "main": [
+        {
+            "name": "Início",
+            "url": "/"
+        },
+        {
+            "name": "Sobre nós",
+            "url": "/sobre-nos"
+        },
+        {
+            "name": "Atividades",
+            "url": "/atividades"
+        },
+        {
+            "name": "O nosso lar",
+            "url": "/o-nosso-lar"
+        }
+    ],
+    "footer": [
+        {
+            "name": "Relatório de contas 2024",
+            "url": "https://obraabc.org/wp-content/uploads/2025/07/Relatorio-de-Contas-2024.pdf"
+        },
+        {
+            "name": "Relatório de contas 2023",
+            "url": "https://obraabc.org/wp-content/uploads/2024/06/Relatorio-de-Contas-2023.pdf"
+        },
+        {
+            "name": "Relatório de contas 2022",
+            "url": "https://obraabc.org/wp-content/uploads/2023/06/Relatorio-de-Contas-2022.pdf"
+        },
+        {
+            "name": "Relatório de contas 2021",
+            "url": "https://obraabc.org/wp-content/uploads/2022/06/Relatorio-de-Contas-2021.pdf"
+        },
+        {
+            "name": "Estatutos ABC",
+            "url": "https://obraabc.org/wp-content/uploads/2021/10/Estatutos-ABC.pdf"
+        },
+        {
+            "name": "Obra ABC - Diário da Républica",
+            "url": "https://obraabc.org/wp-content/uploads/2021/10/OBRA-ABC-Diario-da-Republica.pdf"
+        },
+        {
+            "name": "Obra ABC - DGS",
+            "url": "https://obraabc.org/wp-content/uploads/2021/10/Obra_ABC_DGSS.pdf"
+        }
+    ]
+}

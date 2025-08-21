@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import config from '../config/config.json';
 
 export interface Props {
   title?: string;
@@ -18,9 +19,11 @@ try {
   console.warn("Pages collection not found");
 }
 
+const { meta_description} = config.metadata;
+
 const {
-  title = "Obra ABC",
-  description = "Obra ABC - Organização de apoio às famílias e comunidade",
+  title,
+  description,
   canonical,
   image,
 } = Astro.props;
@@ -71,7 +74,7 @@ const fullTitle = title === "Obra ABC" ? title : `${title} | Obra ABC`;
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body>
-    <header class="site-header">
+    <!-- <header class="site-header">
       <nav class="site-nav">
         <div class="nav-container">
           <a href="/" class="nav-logo">
@@ -92,7 +95,7 @@ const fullTitle = title === "Obra ABC" ? title : `${title} | Obra ABC`;
           </button>
         </div>
       </nav>
-    </header>
+    </header> -->
 
     <main class="site-main">
       <slot />
@@ -155,205 +158,4 @@ const fullTitle = title === "Obra ABC" ? title : `${title} | Obra ABC`;
   </body>
 </html>
 
-<style lang="css">
-  // Component-scoped styles for the layout
-  .site-header {
-    background: var(--color-white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
 
-  .site-nav {
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 70px;
-    }
-
-    .nav-logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--color-primary);
-      text-decoration: none;
-
-      &:hover {
-        color: var(--color-primary-dark);
-      }
-    }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 2rem;
-
-      @media (max-width: 768px) {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--color-white);
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-
-        &.nav-menu--open {
-          display: flex;
-        }
-      }
-
-      a {
-        color: var(--color-text);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.2s ease;
-
-        &:hover {
-          color: var(--color-primary);
-        }
-      }
-    }
-
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 4px;
-      padding: 8px;
-
-      @media (max-width: 768px) {
-        display: flex;
-      }
-
-      span {
-        width: 25px;
-        height: 3px;
-        background: var(--color-text);
-        transition: all 0.3s ease;
-      }
-
-      &.nav-toggle--open {
-        span:nth-child(1) {
-          transform: rotate(45deg) translate(6px, 6px);
-        }
-        span:nth-child(2) {
-          opacity: 0;
-        }
-        span:nth-child(3) {
-          transform: rotate(-45deg) translate(6px, -6px);
-        }
-      }
-    }
-  }
-
-  .site-main {
-    min-height: calc(100vh - 70px - 200px); // Header height - footer height
-  }
-
-  .site-footer {
-    background: var(--color-gray-dark);
-    color: var(--color-white);
-    padding: 1rem;
-    margin-top: auto;
-  }
-
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    list-style: none;
-    padding: 3rem 1rem 1rem;
-    padding: 0;
-  }
-
-  .footer-content {
-    li {
-      display: grid;
-      margin-bottom: 0.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .footer-content {
-      li {
-        display: grid;
-        margin-bottom: 0.5rem;
-      }
-    }
-
-    .footer-section {
-      h3,
-      h4,
-      p {
-        color: var(--color-gray-light);
-        margin-bottom: 1rem;
-        color: var(--color-primary-light);
-      }
-      gap: 2rem;
-      color: var(--color-white);
-      margin-bottom: 2rem;
-    }
-
-    .footer-section {
-      h3,
-      p {
-        h4 {
-          color: var(--color-gray-light);
-          margin-bottom: 1rem;
-          color: var(--color-primary-light);
-        }
-
-        ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          color: var(--color-gray-light);
-          li {
-            margin-bottom: 0.5rem;
-          }
-          a {
-            color: var(--color-white);
-            text-decoration: none;
-            transition: color 0.2s ease;
-
-            &:hover {
-              color: var(--color-primary);
-            }
-          }
-
-          a {
-            color: var(--color-gray-light);
-            text-decoration: none;
-            transition: color 0.2s ease;
-
-            &:hover {
-              color: var(--color-white);
-            }
-          }
-        }
-
-        p {
-          color: var(--color-gray-light);
-          line-height: 1.6;
-        }
-      }
-
-      .footer-bottom {
-        border-top: 1px solid var(--color-gray);
-        padding-top: 1rem;
-        text-align: center;
-        color: var(--color-gray-light);
-      }
-    }
-  }
-</style>

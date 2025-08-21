@@ -1,0 +1,103 @@
+[
+    {
+        "name": "Rita Sousa",
+        "role": "Diretora de Serviços"
+    },
+    {
+        "name": "Teresa Fonseca",
+        "role": "Coordenadora Equipa Administrativa"
+    },
+    {
+        "name": "Rafael Soares",
+        "role": "Equipa Administrativa"
+    },
+    {
+        "name": "Cláudia Alves",
+        "role": "Psicóloga",
+        "team": "Equipa Técnica"
+    },
+    {
+        "name": "Joana Poço",
+        "role": "Educadora Social",
+        "team": "Equipa Técnica"
+    },
+    {
+        "name": "Verónica Biscaia",
+        "role": "Educadora Social",
+        "team": "Equipa Técnica"
+    },
+    {
+        "name": "Nuno Neto",
+        "role": "Coordenador da Equipa Educativa"
+    },
+    {
+        "name": "Ana Barbosa",
+        "role": "Equipa Educativa"
+    },
+    {
+        "name": "Daniel Chinjunda",
+        "team": "Equipa Educativa"
+    },
+    {
+        "name": "Diana Almeida",
+        "team": "Equipa Educativa"
+    },
+    {
+        "name": "Fábio Espino",
+        "team": "Equipa Educativa"
+    },
+    {
+        "name": "João Santos",
+        "team": "Equipa Educativa"
+    },
+    {
+        "name": "José Silva",
+        "team": "Equipa Educativa"
+    },
+    {
+        "name": "Manuel Castro",
+        "team": "Equipa Educativa"
+    },
+    {
+        "name": "Rosa Maria",
+        "team": "Equipa Educativa"
+    },
+    {
+        "name": "Rui Oliveira",
+        "team": "Equipa Educativa"
+    },
+    {
+        "name": "Tiago Neves",
+        "team": "Equipa Educativa"
+    },
+    {
+        "name": "Lúcia Rebelo",
+        "role": "Encarregada de Serviços Gerais",
+        "team": "Coordenadora da Equipa de Apoio"
+    },
+    {
+        "name": "Conceição Carneiro",
+        "role": "Cozinheira",
+        "team": "Equipa de Apoio"
+    },
+    {
+        "name": "Conceição Sousa",
+        "role": "Serviços Gerais",
+        "team": "Equipa de Apoio"
+    },
+    {
+        "name": "Elvira Moreira",
+        "role": "Serviços Gerais",
+        "team": "Equipa de Apoio"
+    },
+    {
+        "name": "Fernanda Lobo",
+        "role": "Cozinheira",
+        "team": "Equipa de Apoio"
+    },
+    {
+        "name": "Isabel Duarte",
+        "role": "Roupeira",
+        "team": "Equipa de Apoio"
+    }
+]

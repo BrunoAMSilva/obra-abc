@@ -1,18 +1,23 @@
 ---
-import HeaderMenu from "../components/HeaderMenu.astro";
-import Footer from '../components/Footer.astro';
-import logoSrc from "../assets/icon/favicon-300x300.png";
+import Banner from '../components/banners/banner.astro';
+import Cta from '../components/CTAs/Cta.astro';
+import FeatureBanner from '../components/features/FeatureBanner.astro';
+import FeatureService from '../components/features/FeatureService.astro';
+import Footer from '../components/footers/FooterWithLogo.astro';
+import Header from '../components/Headers/Header.astro';
+import PageHeader from '../components/Headers/PageHeader.astro';
+import config from '../config/config.json';
 import '../styles/global.css';
 
 const {
-  title = "Obra ABC - Amici Boni Consilii",
-  description = "Obra ABC - Organização de apoio às famílias e comunidade",
+  title,
+  description,
   canonical,
   image,
 } = Astro.props;
 
 const fullTitle =
-  title === "Obra ABC - Amici Boni Consilii" ? title : `${title} | Obra ABC`;
+  title  ? `${title} | ${config.site.title}` : `${config.site.title} - ${config.site.subtitle}`;
 ---
 <!DOCTYPE html>
 <html lang="pt-PT">
@@ -51,8 +56,50 @@ const fullTitle =
 
   </head>
   <body>
-	<HeaderMenu homeTextLabel="Obra ABC" showLabel={false} logoSrc={logoSrc.src} />
+    <Header />
+    <PageHeader />
+    <Banner banner={{
+      title: "Bem-vindo à Obra ABC",
+      content: "A Obra ABC é uma organização dedicada a promover a educação e o bem-estar social.",
+      button: {
+        enable: true,
+        label: "Saiba mais",
+        link: "/sobre-nos"
+      },
+      image: "/images/banner-image.png"
+    }} />
+    <FeatureBanner features={{
+      title: "Nossas Atividades",
+      banner: {
+        title: "Atividades que Transformam Vidas",
+        content: "Descubra como nossas atividades impactam positivamente a comunidade.",
+        button: {
+          enable: true,
+          label: "Ver Atividades",
+          link: "/atividades"
+        }
+      }
+    }} />
+    <FeatureService feature_service={{
+      title: "Serviços de Apoio",
+      description: "Oferecemos uma variedade de serviços para apoiar crianças e famílias.",
+      image: "/images/feature-service-image.png",
+      list: [
+        "Apoio psicológico",
+        "Educação complementar",
+        "Atividades recreativas"
+      ],
+      buttons: [
+        {
+          enable: true,
+          label: "Saiba mais",
+          link: "/servicos",
+          outline: false
+        }
+      ]
+    }} />
     <slot />
-	<Footer />
+    <Cta />
+    <Footer />
   </body>
 </html>

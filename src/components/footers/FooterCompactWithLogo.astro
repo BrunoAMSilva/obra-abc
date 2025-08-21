@@ -1,7 +1,8 @@
 ---
-import { SiteTitle, SiteSlogan } from "../consts";
+import config from '../../config/config.json';
+const {title} = config.site;
+const {footer_description, location, phone, email, copyright, contact_form_action} = config.params;
 ---
-
 <footer
   class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10"
 >
@@ -20,9 +21,9 @@ import { SiteTitle, SiteSlogan } from "../consts";
       ></path>
     </svg>
     <p>
-      {SiteTitle}
+      {title}
       <br />
-      {SiteSlogan}
+      {footer_description}
     </p>
   </aside>
   <nav>
