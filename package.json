@@ -30,7 +30,7 @@
     "daisyui": "^5.0.50",
     "jsdom": "^25.0.0",
     "lighthouse": "^12.2.0",
-    "marked": "catalog:",
+    "marked": "^15.0.12",
     "phosphor-astro": "^2.1.0",
     "playwright": "^1.49.0",
     "sass": "^1.89.2",
